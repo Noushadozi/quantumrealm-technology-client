@@ -20,12 +20,18 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import ProfileDropDown from './ProfileDropDown';
+
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
+    //TODO
+    let user = false;
+    //TODO
+
     const pages = <>
         <NavLink className="nav-link mr-16" to="/">1</NavLink>
         <NavLink className="nav-link mr-16" to="/">2</NavLink>
@@ -91,7 +97,7 @@ const Navbar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    
+
 
     return (
         <AppBar color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
@@ -162,33 +168,13 @@ const Navbar = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
+
+                        {
+                            user ?
+                                <Link to="/login">Log in</Link>
+                                :
+                                <ProfileDropDown></ProfileDropDown>
+                        }
                     </Box>
                 </Toolbar>
             </Container>

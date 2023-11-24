@@ -1,0 +1,37 @@
+[
+    {
+        "image_url": "https://i.ibb.co/VTfGHZN/AIOT.png",
+        "title": "AIOT Services",
+        "subtitle": "Integrating AIOT for Smarter Connectivity - Bridging Devices, Sensors, and AI for Seamless Automation and Optimization."
+    },
+    {
+        "image_url": "https://i.ibb.co/DYM8PX7/Software-Development.png",
+        "title": "Software Development",
+        "subtitle": "Crafting Cutting-Edge Software Solutions - Tailored to Elevate Efficiency, Performance, and User Experience."
+    },
+    {
+        "image_url": "https://i.ibb.co/NCR5CKL/Web-Development.png",
+        "title": "Web Development",
+        "subtitle": "Web Excellence Redefined - Innovative Design and Development for Engaging, Responsive, and Scalable Online Experiences."
+    },
+    {
+        "image_url": "https://i.ibb.co/ySh9jP5/Database-Architect.png",
+        "title": "Database Architecture",
+        "subtitle": "Architecting Data for Performance - Expert Database Solutions for Efficient Storage, Retrieval, and Management of Information."
+    },
+    {
+        "image_url": "https://i.ibb.co/RHSnD3T/AI.png",
+        "title": "AI Solutions",
+        "subtitle": "Empowering Intelligence - Advanced AI Solutions for Smart Decision-Making, Automation, and Enhanced User Interactions."
+    },
+    {
+        "image_url": "https://i.ibb.co/k1HhtTz/Machine-Learning.png",
+        "title": "ML Solutions",
+        "subtitle": "Unleashing Machine Learning - Tailored ML Solutions for Data Analysis, Pattern Recognition, and Informed Business Insights."
+    },
+    {
+        "image_url": "https://i.ibb.co/89J5s30/App-Development.png",
+        "title": "Mobile App Development",
+        "subtitle": "Seamless Mobility, Exceptional Experiences - Crafting Intuitive and High-Performance Mobile Apps for a Connected and Dynamic World."
+    }
+]
