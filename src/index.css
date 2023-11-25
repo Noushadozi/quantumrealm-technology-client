@@ -65,3 +65,6 @@ body{
   .inputbox input:focus ~i {
     height: 44px;
   }
+  .bg-red{
+    background-color: brown;
+  }

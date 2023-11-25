@@ -1,0 +1,123 @@
+[
+    {
+        "name": "alex",
+        "email": "alex@gmail.com",
+        "photo": "https://i.ibb.co/2hbT05Z/wepik-export-20231125050226zabo.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "100000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "robert",
+        "email": "robert@gmail.com",
+        "photo": "https://i.ibb.co/hdqdGZn/wepik-export-20231125050100w-Ut-M.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "90000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "jhon",
+        "email": "jhon@gmail.com",
+        "photo": "https://i.ibb.co/9nbKbNJ/wepik-export-20231125050041p-Ia-G.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "40000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "edward",
+        "email": "edward@gmail.com",
+        "photo": "https://i.ibb.co/n7V314Q/wepik-export-20231125045918m-Hh-Q.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "60000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "simon",
+        "email": "simon@gmail.com",
+        "photo": "https://i.ibb.co/hRKBqFz/wepik-export-20231125045758-Z9ei.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "70000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "andrew",
+        "email": "andrew@gmail.com",
+        "photo": "https://i.ibb.co/xJ0kM5d/wepik-export-20231125045711-L2-TD.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "30000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "nicolas",
+        "email": "nicolas@gmail.com",
+        "photo": "https://i.ibb.co/s6yVSGh/wepik-export-20231125045537q-CZw.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "10000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "abraham",
+        "email": "abraham@gmail.com",
+        "photo": "https://i.ibb.co/0mdPsTS/wepik-export-2023112504531109lo.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "20000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "bavuma",
+        "email": "bavuma@gmail.com",
+        "photo": "https://i.ibb.co/KF6QGd7/wepik-export-20231125045009-WUFx.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "80000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "david",
+        "email": "david@gmail.com",
+        "photo": "https://i.ibb.co/8X8mSjP/wepik-export-20231125044740-K3-X6.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "60000",
+        "payments": [],
+        "designation": ""
+    },
+    {
+        "name": "nick",
+        "email": "nick@gmail.com",
+        "photo": "https://i.ibb.co/bbhGLrY/wepik-export-20231125044628-AYBP.jpg",
+        "role": "Employee",
+        "bank_account_no": "",
+        "verified": false,
+        "salary": "50000",
+        "payments": [],
+        "designation": ""
+    }
+]

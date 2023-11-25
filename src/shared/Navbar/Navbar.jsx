@@ -33,12 +33,9 @@ const Navbar = () => {
     const { user, loading } = useContext(AuthContext)
     //TODO
     // let user = false;
-    console.log(user)
     //TODO
 
     const pages = <>
-        <NavLink className="nav-link mr-16" to="/">1</NavLink>
-        <NavLink className="nav-link mr-16" to="/">2</NavLink>
         <NavLink className="nav-link mr-16" to="/dashboard">Dashboard</NavLink>
         <NavLink className="nav-link mr-16" to="/contactUs">Contact us</NavLink>
     </>
@@ -104,26 +101,30 @@ const Navbar = () => {
 
 
     return (
-        <AppBar color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
+        <AppBar
+            sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: '',
+                fontWeight: 700,
+
+                color: '#292525',
+                textDecoration: 'none',
+            }}
+
+            color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
             <Container maxWidth="xl">
                 <Toolbar className='' disableGutters>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="#app-bar-with-responsive-menu"
+                    <Link
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            fontFamily: '',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: '#292525',
                             textDecoration: 'none',
                         }}
-                    >
-                        Employee Management
-                    </Typography>
+                        to={'/'}>Employee Management</Link>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 

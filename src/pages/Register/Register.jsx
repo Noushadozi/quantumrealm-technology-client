@@ -48,15 +48,6 @@ const Register = () => {
         const name = data.name;
         const imageFile = { image: data.photo[0] };
         const email = data.email;
-        let photo;
-        const userInfo = {
-            email,
-            photo,
-            role: selected.name,
-            bank_account_no: '',
-            salary: '',
-            designation: '',
-        }
         createUser(email, data.password)
             .then(async (res) => {
                 console.log(res.user)
@@ -68,30 +59,41 @@ const Register = () => {
                     .then(res => {
                         if (res.data.success) {
                             console.log(res.data.success)
-                            photo = res.data.data.display_url,
-                            console.log(name, res.data.data.display_url)
-                                update(name, res.data.data.display_url)
-                                    .then(res => {
-                                        console.log(res)
+                            const salary = Math.floor(Math.random() * 10) + 1 + '0000';
 
-                                        console.log(userInfo)
-                                        axiosPublic.post('/users', (userInfo))
-                                            .then(res => {
-                                                console.log(res.data)
-                                                navigate('/');
-                                                Swal.fire({
-                                                    position: "top-end",
-                                                    icon: "success",
-                                                    title: "Your work has been saved",
-                                                    showConfirmButton: false,
-                                                    timer: 1500
-                                                });
-                                            })
-                                    })
-                                    .catch(err => {
-                                        setError(err.message)
-                                        console.log(err)
-                                    })
+                            const userInfo = {
+                                name,
+                                email,
+                                photo: res.data.data.display_url,
+                                role: selected.name,
+                                bank_account_no: '',
+                                salary: salary,
+                                verified: false,
+                                designation: '',
+                            }
+                            console.log(name, res.data.data.display_url)
+                            update(name, res.data.data.display_url)
+                                .then(res => {
+                                    console.log(res)
+
+                                    console.log(userInfo)
+                                    axiosPublic.post('/users', (userInfo))
+                                        .then(res => {
+                                            console.log(res.data)
+                                            navigate('/');
+                                            Swal.fire({
+                                                position: "top-end",
+                                                icon: "success",
+                                                title: "Your work has been saved",
+                                                showConfirmButton: false,
+                                                timer: 1500
+                                            });
+                                        })
+                                })
+                                .catch(err => {
+                                    setError(err.message)
+                                    console.log(err)
+                                })
                         }
                     })
                     .catch(err => {
