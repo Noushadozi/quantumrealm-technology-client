@@ -8,7 +8,7 @@ const FaqSection = () => {
             lg:bg-[url('https://lovecare.smartdemowp.com/wp-content/themes/lovecare/assets/images/shapes/faq-2-dot.png')] bg-no-repeat bg-left-bottom">
                 <img src="https://lovecare.smartdemowp.com/wp-content/uploads/faq-2-1.jpeg" alt="" />
 
-                <div className="md:w-[33%]">
+                <div className="md:w-[80%]">
                     <Title
                     title={"Frequently asked questions"}
                     subTitle={"Some questions our clients asks frequently"}

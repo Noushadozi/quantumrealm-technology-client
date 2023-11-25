@@ -22,14 +22,18 @@ import MailIcon from '@mui/icons-material/Mail';
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { Link, NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropDown';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 // const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
+    const { user, loading } = useContext(AuthContext)
     //TODO
-    let user = false;
+    // let user = false;
+    console.log(user)
     //TODO
 
     const pages = <>
@@ -170,10 +174,12 @@ const Navbar = () => {
                     <Box sx={{ flexGrow: 0 }}>
 
                         {
-                            user ?
+                            !user && !loading ?
                                 <Link to="/login">Log in</Link>
                                 :
-                                <ProfileDropDown></ProfileDropDown>
+                                <ProfileDropDown
+                                    user={user}
+                                ></ProfileDropDown>
                         }
                     </Box>
                 </Toolbar>
