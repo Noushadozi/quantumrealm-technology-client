@@ -37,6 +37,8 @@ const Navbar = () => {
 
     const pages = <>
         <NavLink className="nav-link mr-16" to="/dashboard">Dashboard</NavLink>
+        <NavLink className="nav-link mr-16" to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
+        <NavLink className="nav-link mr-16" to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
         <NavLink className="nav-link mr-16" to="/contactUs">Contact us</NavLink>
     </>
 
@@ -102,7 +104,7 @@ const Navbar = () => {
 
     return (
         <AppBar
-        color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
+            color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
             <Container maxWidth="xl">
                 <Toolbar className='' disableGutters>
                     <Typography
@@ -115,7 +117,7 @@ const Navbar = () => {
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            
+
                             color: '#292525',
                             textDecoration: 'none',
                         }}

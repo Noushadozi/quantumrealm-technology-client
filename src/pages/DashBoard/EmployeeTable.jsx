@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import Title from "../../ui/Title";
 
 const EmployeeTable = () => {
     const axiosPublic = useAxiosPublic();
@@ -67,8 +68,8 @@ const EmployeeTable = () => {
                             range: range,
                             payment: payment
                         }
-                        const payments = rowData.payments;
-                        payments.push(paymentInfo)
+                        let payments = rowData.payments || [];
+                        payments.unshift(paymentInfo)
                         console.log(payments)
                         axiosPublic.patch(`/user-payment/${rowData._id}`, payments)
                             .then(res => {
@@ -91,42 +92,47 @@ const EmployeeTable = () => {
     }, [users.data]);
 
     return (
-        <div>
-            {
-                !isLoading && <table>
-                    <thead>
-                        {tableInstance.getHeaderGroups().map((headerEl, index) => {
-                            return <tr key={index}>{headerEl.headers.map((columnEl, index) => {
-                                return (
-                                    <th key={index} colSpan={columnEl.colSpan}>
-                                        {
-                                            flexRender(
-                                                columnEl.column.columnDef.header,
-                                                columnEl.getContext()
-                                            )
-                                        }
-                                    </th>
-                                )
+        <div className="mt-[50px]">
+            <Title
+                title={'HR Dashboard'}
+            ></Title>
+            <div className="w-[80%] mx-auto mt-[0px]">
+                {
+                    !isLoading && <table>
+                        <thead>
+                            {tableInstance.getHeaderGroups().map((headerEl, index) => {
+                                return <tr key={index}>{headerEl.headers.map((columnEl, index) => {
+                                    return (
+                                        <th key={index} colSpan={columnEl.colSpan}>
+                                            {
+                                                flexRender(
+                                                    columnEl.column.columnDef.header,
+                                                    columnEl.getContext()
+                                                )
+                                            }
+                                        </th>
+                                    )
+                                })}
+                                </tr>
                             })}
-                            </tr>
-                        })}
-                    </thead>
-                    <tbody>
-                        {tableInstance.getRowModel().rows.map((rowEl, index) => (
-                            <tr key={index}>
-                                {rowEl.getVisibleCells().map((cellEl, index) => (
-                                    <td key={index} onClick={() => handleCellClick(rowEl.original, cellEl.column)}>
-                                        {flexRender(
-                                            cellEl.column.columnDef.cell,
-                                            cellEl.getContext()
-                                        )}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            }
+                        </thead>
+                        <tbody>
+                            {tableInstance.getRowModel().rows.map((rowEl, index) => (
+                                <tr key={index}>
+                                    {rowEl.getVisibleCells().map((cellEl, index) => (
+                                        <td key={index} onClick={() => handleCellClick(rowEl.original, cellEl.column)}>
+                                            {flexRender(
+                                                cellEl.column.columnDef.cell,
+                                                cellEl.getContext()
+                                            )}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                }
+            </div>
         </div>
     );
 };
