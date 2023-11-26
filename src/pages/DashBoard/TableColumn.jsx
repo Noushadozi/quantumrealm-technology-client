@@ -25,12 +25,13 @@ export const columnDef = [
         header: 'Salary',
     },
     {
-        accessorFn: () => `💸`,
+        accessorFn: () => `Pay`,
         header: 'Pay',
         onClick: () => { },
     },
     {
-        accessorKey: 'designation',
+        accessorFn: () => `Details`,
         header: 'Details',
+        onClick: () => { },
     },
 ]

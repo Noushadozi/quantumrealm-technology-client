@@ -6,8 +6,21 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "100000",
-        "payments": [],
+        "salary": 100000,
+        "payments": [
+            {
+                "month": "jan",
+                "payment": 4000
+            },
+            {
+                "month": "feb",
+                "payment": 8000
+            },
+            {
+                "month": "mar",
+                "payment": 2000
+            }
+        ],
         "designation": ""
     },
     {
@@ -17,7 +30,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "90000",
+        "salary": 90000,
         "payments": [],
         "designation": ""
     },
@@ -28,7 +41,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "40000",
+        "salary": 40000,
         "payments": [],
         "designation": ""
     },
@@ -39,7 +52,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "60000",
+        "salary": 60000,
         "payments": [],
         "designation": ""
     },
@@ -50,7 +63,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "70000",
+        "salary": 70000,
         "payments": [],
         "designation": ""
     },
@@ -61,7 +74,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "30000",
+        "salary": 30000,
         "payments": [],
         "designation": ""
     },
@@ -72,7 +85,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "10000",
+        "salary": 10000,
         "payments": [],
         "designation": ""
     },
@@ -83,7 +96,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "20000",
+        "salary": 20000,
         "payments": [],
         "designation": ""
     },
@@ -94,7 +107,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "80000",
+        "salary": 80000,
         "payments": [],
         "designation": ""
     },
@@ -105,7 +118,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "60000",
+        "salary": 60000,
         "payments": [],
         "designation": ""
     },
@@ -116,7 +129,7 @@
         "role": "Employee",
         "bank_account_no": "",
         "verified": false,
-        "salary": "50000",
+        "salary": 50000,
         "payments": [],
         "designation": ""
     }

@@ -4,9 +4,11 @@ import { columnDef } from "./TableColumn";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeTable = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const { refetch, data: users = [], isLoading } = useQuery({
         queryKey: ['users'],
@@ -20,14 +22,15 @@ const EmployeeTable = () => {
                     .then(res => {
                         console.log(res)
                         refetch();
+                        refetch();
                     })
             }
             else if (column.columnDef.header === 'Pay') {
                 if (!rowData.verified) {
                     return
                 }
-                let salary;
-                let range;
+                let payment;
+                let method;
 
                 Swal.fire({
                     title: `What payment do you want to be done to ${rowData.name}?`,
@@ -40,28 +43,43 @@ const EmployeeTable = () => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         Swal.fire("Done", `Monthly payment done to ${rowData.name}`, "success");
-                        salary = rowData.salary * 1;
-                        range = 1;
+                        payment = rowData.salary * 1;
+                        method = 'monthly';
                     } else if (result.isDenied) {
                         Swal.fire("Done", `Yearly payment done to ${rowData.name}`, "success");
-                        salary = rowData.salary * 12;
-                        range = 12;
+                        payment = rowData.salary * 12;
+                        method = 'yearly';
                     }
-                    if (salary) {
-                        console.log(salary);
-                        console.log(range);
-                        new Date()
-                        // axiosPublic.patch(`/user-paying`, salary)
+                    if (payment) {
+                        let range;
                         const currentDate = new Date();
-                        const day = currentDate.getDate();
-                        const month = currentDate.getMonth();
-                        const year = currentDate.getFullYear();
-
-                        console.log(`${day}, ${month}, ${year}`);
-                        console.log(currentDate.toString().slice(4, 7));
-
+                        if (method === 'monthly') {
+                            const month = currentDate.toString().slice(4, 7)
+                            range = month;
+                        }
+                        else if (method === 'yearly') {
+                            const year = currentDate.getFullYear();
+                            range = year;
+                        }
+                        // console.log(range);
+                        // console.log(rowData.payments)
+                        const paymentInfo = {
+                            range: range,
+                            payment: payment
+                        }
+                        const payments = rowData.payments;
+                        payments.push(paymentInfo)
+                        console.log(payments)
+                        axiosPublic.patch(`/user-payment/${rowData._id}`, payments)
+                            .then(res => {
+                                console.log(res)
+                            })
                     }
                 });
+            }
+            else if (column.columnDef.header === 'Details') {
+                console.log('details');
+                navigate(`/employeeDetails/${rowData._id}`)
             }
         }
     };

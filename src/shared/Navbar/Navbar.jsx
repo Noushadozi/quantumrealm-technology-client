@@ -102,29 +102,26 @@ const Navbar = () => {
 
     return (
         <AppBar
-            sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: '',
-                fontWeight: 700,
-
-                color: '#292525',
-                textDecoration: 'none',
-            }}
-
-            color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
+        color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
             <Container maxWidth="xl">
                 <Toolbar className='' disableGutters>
-                    <Link
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: '',
+                            fontFamily: 'monospace',
                             fontWeight: 700,
+                            
                             color: '#292525',
                             textDecoration: 'none',
                         }}
-                        to={'/'}>Employee Management</Link>
+                    >
+                        <Link to={'/'}>Employee Management</Link>
+                    </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 
