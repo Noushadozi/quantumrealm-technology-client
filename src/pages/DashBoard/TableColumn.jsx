@@ -1,8 +1,6 @@
 import { createColumnHelper } from "@tanstack/react-table"
 const columnHelper = createColumnHelper();
 
-// let pay buton
-
 export const columnDef = [
     columnHelper.accessor("name", {
         header: "Name",

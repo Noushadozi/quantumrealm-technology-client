@@ -14,6 +14,7 @@ import Swal from "sweetalert2";
 import WorkSheetSelect from "./WorkSheetSelect";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import WorkSheetTable from "./WorkSheetTable";
 
 const WorkSheet = () => {
     const axiosPublic = useAxiosPublic();
@@ -35,7 +36,7 @@ const WorkSheet = () => {
     const [selectedTask, setSelectedTask] = useState(tasks[0])
     const [date, setDate] = useState(new Date());
 
-    const { data: userData = [], isLoading } = useQuery({
+    const { refetch, data: userData = [], isLoading } = useQuery({
         queryKey: ['user', user.email],
         queryFn: () => axiosPublic(`/usersInfo/${user.email}`)
     })
@@ -44,8 +45,9 @@ const WorkSheet = () => {
         return <progress></progress>
     }
 
-    console.log(userData.data[0]);
+    // console.log(userData.data[0]);
 
+    console.log(userData?.data[0]);
     const onSubmit = async (data) => {
         const taskInfo = {
             task: selectedTask.name,
@@ -56,9 +58,22 @@ const WorkSheet = () => {
 
         tasks.unshift(taskInfo);
 
+        console.log(userData?.data[0]?.task);
         axiosPublic.patch(`/userTask/${user.email}`, tasks)
             .then(res => {
-                console.log(res.data)
+                console.log();
+                if(res.data.acknowledged){
+                    refetch()
+                    refetch()
+                    console.log(userData?.data[0]);
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             })
     }
 
@@ -66,7 +81,7 @@ const WorkSheet = () => {
         <div>
             <div className="bg-[#f0f7f7] flex flex-col">
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className="my-[200px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12">
+                    className="mt-[150px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12">
                     <div className="my-[20px] w-[60%]">
                         <FormControl fullWidth>
                             <WorkSheetSelect
@@ -98,6 +113,10 @@ const WorkSheet = () => {
                     </div>
                 </form>
             </div>
+            <WorkSheetTable
+                data={userData}
+                isLoading={isLoading}
+            ></WorkSheetTable>
         </div>
     );
 };
