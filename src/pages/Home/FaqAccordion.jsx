@@ -12,7 +12,7 @@ const FaqAccordion = () => {
         <AccordionGroup
             size='lg'
             sx={{
-                maxWidth: 400,
+                maxWidth: 500,
                 [`& .${accordionSummaryClasses.indicator}`]: {
                     transition: '0.2s',
                 },
@@ -21,9 +21,9 @@ const FaqAccordion = () => {
                 },
             }}
         >
-            <Accordion className="bg-[white]">
+            <Accordion className="bg-[#8d98fa] rounded">
                 <AccordionSummary indicator={
-                    <div className='bg-[#5bb286] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
+                    <div className='bg-[#4e3bb1] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
                         <AddIcon className='text-white' />
                     </div>
                 }>Do you provide ongoing support for your software products?</AccordionSummary>

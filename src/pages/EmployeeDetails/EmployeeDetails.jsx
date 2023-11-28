@@ -27,8 +27,8 @@ const EmployeeDetails = () => {
         <div className="flex flex-col items-center gap-12 my-16">
             <div className="flex gap-12 items-center justify-center">
                 <img className="rounded-lg h-[350px]" src={photo} />
-                <h2 className="text-4xl font-semibold">{name}</h2>
-                <h2 className="text-3xl font-semibold">{designation}</h2>
+                <h2 className="text-4xl font-semibold text-[#00fde8]">{name}</h2>
+                <h2 className="text-3xl font-semibold tex-[#00fde8]">{designation}</h2>
             </div>
             <BarChart
                 width={500}
@@ -46,7 +46,7 @@ const EmployeeDetails = () => {
                 <YAxis dataKey={`payment`}/>
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="payment" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+                <Bar dataKey="payment" fill="#00fde8" activeBar={<Rectangle fill="gold" stroke="purple" />} />
             </BarChart> 
         </div>
     );

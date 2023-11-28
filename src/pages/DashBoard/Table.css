@@ -2,20 +2,21 @@ table {
     font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    color: white;
 }
 
 table td,
 table th {
-    border: 1px solid #ddd;
+    border: 1px solid white;
     padding: 8px;
 }
 
 table tr:nth-child(even) {
-    background-color: rgb(234, 245, 237);
+    background-color: #00b4e7;
 }
 
 table tr:hover {
-    background-color: #ddd;
+    background-color: #00fde8; 
 }
 
 table th,
@@ -23,6 +24,6 @@ tfoot td {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #4caf50;
-    color: white;
+    background-color: white;
+    color: #001f4b;
 }

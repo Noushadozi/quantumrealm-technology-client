@@ -48,6 +48,7 @@ const WorkSheet = () => {
     // console.log(userData.data[0]);
 
     console.log(userData?.data[0]);
+    
     const onSubmit = async (data) => {
         const taskInfo = {
             task: selectedTask.name,
@@ -62,7 +63,7 @@ const WorkSheet = () => {
         axiosPublic.patch(`/userTask/${user.email}`, tasks)
             .then(res => {
                 console.log();
-                if(res.data.acknowledged){
+                if (res.data.acknowledged) {
                     refetch()
                     refetch()
                     console.log(userData?.data[0]);
@@ -78,10 +79,10 @@ const WorkSheet = () => {
     }
 
     return (
-        <div>
-            <div className="bg-[#f0f7f7] flex flex-col">
+        <div className="bg-[url('https://i.ibb.co/Jj7jRhF/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0012-Photo-Room-png-Phot.png')] bg-no-repeat bg-right">
+            <div className="flex flex-col">
                 <form onSubmit={handleSubmit(onSubmit)}
-                    className="mt-[150px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12">
+                    className="mt-[150px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12 bg-gradient-to-r from-[#14abe3] to-[#00fce7] text-[#001f4b]">
                     <div className="my-[20px] w-[60%]">
                         <FormControl fullWidth>
                             <WorkSheetSelect
@@ -102,6 +103,7 @@ const WorkSheet = () => {
                     <div className="my-[20px] w-[60%]">
                         <FormControl fullWidth>
                             <DatePicker
+                                className="bg-gradient-to-r from-[#a9b6e2] to-[#c9f3c1] text-[#001f4b] rounded-lg shadow-lg"
                                 showIcon
                                 selected={date}
                                 onChange={(date) => setDate(date)}
@@ -109,7 +111,9 @@ const WorkSheet = () => {
                         </FormControl>
                     </div>
                     <div className="mt-[15px] w-[60%]">
-                        <Button variant="contained" type="submit" className="w-full">Add</Button>
+                        <Button
+                            sx={{ color: '#001f4b', bgcolor: '#b774f5', fontWeight: 600 }}
+                            variant="contained" type="submit" className="w-full">Add</Button>
                     </div>
                 </form>
             </div>

@@ -48,6 +48,9 @@ const Register = () => {
         const name = data.name;
         const imageFile = { image: data.photo[0] };
         const email = data.email;
+        const salary = data.salary;
+        const designation = data.designation;
+        const bank_account = data.bank_account;
         createUser(email, data.password)
             .then(async (res) => {
                 console.log(res.user)
@@ -58,18 +61,16 @@ const Register = () => {
                 })
                     .then(res => {
                         if (res.data.success) {
-                            console.log(res.data.success)
-                            const salary = Math.floor(Math.random() * 10) + 1 + '0000';
 
                             const userInfo = {
                                 name,
                                 email,
                                 photo: res.data.data.display_url,
                                 role: selected.name,
-                                bank_account_no: '',
+                                bank_account_no: bank_account,
                                 salary: salary,
                                 verified: false,
-                                designation: '',
+                                designation: designation,
                             }
                             console.log(name, res.data.data.display_url)
                             update(name, res.data.data.display_url)
@@ -123,9 +124,9 @@ const Register = () => {
     }
 
     return (
-        <div className="bg-[#f0f7f7] flex flex-col">
+        <div className="flex flex-col">
             <form onSubmit={handleSubmit(onSubmit)}
-                className="my-[200px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12">
+                className="my-[200px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12 bg-gradient-to-r from-[#14abe3] to-[#00fce7] text-[#001f4b]">
 
                 <div className="my-[20px] w-[80%]">
                     <FormControl fullWidth>
@@ -136,33 +137,65 @@ const Register = () => {
                         ></RegisterSelect>
                     </FormControl>
                 </div>
-                <div className="my-[20px] w-[80%]">
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Name</InputLabel>
-                        <Input
-                            {...register("name", { required: true })}
-                            name="name" aria-describedby="my-helper-text" />
-                    </FormControl>
-                </div>
+                <div className="flex">
+                    <div>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Name</InputLabel>
+                                <Input
+                                    {...register("name", { required: true })}
+                                    name="name" aria-describedby="my-helper-text" />
+                            </FormControl>
+                        </div>
 
-                <div className="my-[20px] w-[80%]">
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Email</InputLabel>
-                        <Input
-                            {...register("email", { required: true })}
-                            name="email" aria-describedby="my-helper-text" />
-                    </FormControl>
-                </div>
-                <div className="my-[20px] w-[80%]">
-                    <FormControl fullWidth>
-                        <InputLabel htmlFor="my-input">Password</InputLabel>
-                        <Input
-                            {...register("password", { required: true })}
-                            name="password" aria-describedby="my-helper-text" type="password" />
-                    </FormControl>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Email</InputLabel>
+                                <Input
+                                    {...register("email", { required: true })}
+                                    name="email" aria-describedby="my-helper-text" />
+                            </FormControl>
+                        </div>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Password</InputLabel>
+                                <Input
+                                    {...register("password", { required: true })}
+                                    name="password" aria-describedby="my-helper-text" type="password" />
+                            </FormControl>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Salary</InputLabel>
+                                <Input
+                                    {...register("salary", { required: true })}
+                                    name="salary" aria-describedby="my-helper-text" />
+                            </FormControl>
+                        </div>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Designation</InputLabel>
+                                <Input
+                                    {...register("designation", { required: true })}
+                                    name="designation" aria-describedby="my-helper-text" />
+                            </FormControl>
+                        </div>
+                        <div className="my-[20px] w-[80%]">
+                            <FormControl fullWidth>
+                                <InputLabel htmlFor="my-input">Bank Account Number</InputLabel>
+                                <Input
+                                    {...register("bank_account", { required: true })}
+                                    name="bank_account" aria-describedby="my-helper-text" />
+                            </FormControl>
+                        </div>
+                    </div>
                 </div>
                 <div className="mt-[10px] w-[80%]">
-                    <Button component="label" variant="outlined" startIcon={<CloudUploadIcon />}>
+                    <Button
+                        sx={{ color: '#b774f5', border: '2px solid #b774f5', fontWeight: 600 }}
+                        component="label" variant="outlined" startIcon={<CloudUploadIcon />}>
                         Upload Photo
                         <VisuallyHiddenInput
                             {...register("photo", { required: true })}
@@ -171,21 +204,22 @@ const Register = () => {
                 </div>
                 <p className="text-[#e96969] font-semibold mt-2 text-[14px]">{error}</p>
                 <div className="mt-[35px] w-[80%]">
-                    <Button variant="contained" type="submit" className="w-full">Register</Button>
+                    <Button
+                        sx={{ color: '#001f4b', bgcolor: '#b774f5', fontWeight: 600 }}
+                        variant="contained" type="submit" className="w-full">Register</Button>
                 </div>
                 <div className="mt-[20px] w-[80%]">
                     <Button
+                        sx={{ color: '#b774f5', border: '2px solid #b774f5', fontWeight: 600 }}
                         onClick={handleGoogleLogIn}
                         variant="outlined" type="submit" className="w-full">
                         <div className="flex gap-4 items-center">
-                            <p>
-                                Continue with google
-                            </p>
+                            <p>Continue with google</p>
                             <FcGoogle />
                         </div>
                     </Button>
                 </div>
-                <p className="mt-3">Already have an account?<Link to={'/login'}> Login here</Link></p>
+                <p className="mt-3">Already have an account?<Link className="text-[#b774f5] font-semibold" to={'/login'}> Login here</Link></p>
             </form>
         </div>
     );

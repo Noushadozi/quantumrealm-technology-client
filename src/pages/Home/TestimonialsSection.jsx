@@ -36,15 +36,15 @@ const TestimonialsSection = () => {
             >
                 {
                     reviewsData.data.map((review, index) => <SwiperSlide key={index}>
-                        <div className='p-5 border bg-[white]'>
-                            <p className='text-[#9c9ea6]'>
+                        <div className='p-5 bg-[white] bg-gradient-to-r from-[#14abe3] to-[#00fce7] rounded-lg text-[#001f4b] shadow-xl shadow-[#6444d1] mb-[50px] text-[15px]'>
+                            <p className=''>
                                 {review.review}
                             </p>
                             <div className='flex gap-5 my-4 '>
                                 <Avatar alt="Cindy Baker" src="https://i.ibb.co/2vr92pb/austin-distel-waw-Ef-Ydpkag-unsplash.jpg" />
                                 <div>
-                                    <h2 className='text-[19px]'>{review.name}</h2>
-                                    <p className='text-[15px]'>{review.role} @ {review.company}</p>
+                                    <h2 className='text-[19px] font-bold'>{review.name}</h2>
+                                    <p className='text-[15px] font-semibold'>{review.role} @ {review.company}</p>
                                 </div>
                             </div>
                         </div>

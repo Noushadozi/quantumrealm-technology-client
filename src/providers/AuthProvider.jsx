@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, GoogleAuthProvider, deleteUser } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../config/firbase.config";
 
@@ -31,6 +31,10 @@ const AuthProvider = ({ children }) => {
         })
     }
 
+    const remove = () => {
+        return deleteUser(user)
+    }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
@@ -51,6 +55,7 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         update,
+        remove,
         logIn,
         googleSignIn,
         logOut,

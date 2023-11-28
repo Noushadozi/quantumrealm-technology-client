@@ -8,7 +8,7 @@ import Title from "../../ui/Title";
 
 const PaymentHistory = () => {
     const axiosPublic = useAxiosPublic();
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const { data, isLoading } = useQuery({
         queryKey: ['user', user.email],
@@ -28,7 +28,7 @@ const PaymentHistory = () => {
     console.log(data?.data[0]?.payments);
 
     return (
-        <div className="mt-[50px]">
+        <div className="mt-[50px] pb-[80px] bg-[url('https://i.ibb.co/GQ57fvD/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0003-Photo-Room-png-Phot.png')] bg-no-repeat bg-left-top">
             <Title
                 title={'Payment history'}
             ></Title>

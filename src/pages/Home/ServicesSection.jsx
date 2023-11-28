@@ -16,7 +16,7 @@ const ServicesSection = () => {
         return <progress></progress>
     }
     return (
-        <div className='my-[80px] lg:w-[90%] xl:w-[80%] mx-auto'>
+        <div className="my-[80px] lg:w-[90%] xl:w-[80%] mx-auto lg:bg-[url('https://i.ibb.co/NF7sNMm/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0005-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-bottom">
             <div className='mb-[70px]'>
                 <Title
                     title={"01.Services"}
@@ -36,11 +36,11 @@ const ServicesSection = () => {
             >
                 {
                      servicesData.data.map((service, index) => <SwiperSlide key={index}>
-                        <div className='flex flex-col items-center justify-center shadow-lg rounded-lg bg-white h-[400px] my-5'>
+                        <div className='flex flex-col items-center justify-center shadow-xl shadow-[#6444d1] rounded-lg text-[#001f4b] h-[400px] bg-gradient-to-r from-[#14abe3] to-[#00fce7] mb-[50px]'>
 
                             <img className='px-[40px] pt-[20px] md:px-[60px] md:pt-[25px] lg:px-[70px] lg:pt-[30px] max-h-[250px]' src={service.image_url} alt="" />
-                            <h2 className='text-[#2d2929] text-[23px] font-semibold my-3'>{service.title}</h2>
-                            <p className='text-[15px] text-center text-[#9c9ea6] mb-4 w-[80%]'>{service.subtitle}</p>
+                            <h2 className='text-[23px] font-bold my-3'>{service.title}</h2>
+                            <p className='text-[15px] text-center mb-4 w-[80%]'>{service.subtitle}</p>
                         </div>
                     </SwiperSlide>)
                 }

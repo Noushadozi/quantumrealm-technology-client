@@ -54,12 +54,14 @@ const Login = () => {
     }
 
     return (
-        <div className="bg-[#f0f7f7]">
+        <div>
             <form onSubmit={handleSubmit(onSubmit)}
-                className="my-[200px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12">
+                className="my-[200px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] rounded-lg pt-5 pb-12  bg-gradient-to-r from-[#14abe3] to-[#00fce7] mb-[50px] text-[#001f4b]">
 
-                <div className="my-[20px] w-[80%]">
-                    <FormControl fullWidth>
+                <div className="my-[20px] w-[80%] text-[#001f4b]">
+                    <FormControl
+                        sx={{ color: '#001f4b' }}
+                        fullWidth>
                         <InputLabel htmlFor="my-input">Email</InputLabel>
                         <Input
                             {...register("email", { required: true })}
@@ -67,7 +69,9 @@ const Login = () => {
                     </FormControl>
                 </div>
                 <div className="my-[20px] w-[80%]">
-                    <FormControl fullWidth>
+                    <FormControl
+                        sx={{ color: '#001f4b' }}
+                        fullWidth>
                         <InputLabel htmlFor="my-input">Password</InputLabel>
                         <Input
                             {...register("password", { required: true })}
@@ -75,12 +79,13 @@ const Login = () => {
                     </FormControl>
                 </div>
                 <p className="text-[#e96969] font-semibold mt-2 text-[14px]">{error}</p>
-
                 <div className="mt-[40px] w-[80%]">
-                    <Button variant="contained" type="submit" className="w-full">Log In</Button>
+                    <Button
+                        sx={{ color: '#001f4b', bgcolor: '#b774f5', fontWeight: 600 }} variant="contained" type="submit" className="w-full">Log In</Button>
                 </div>
                 <div className="mt-[20px] w-[80%]">
                     <Button
+                        sx={{ color: '#b774f5', border: '2px solid #b774f5',fontWeight: 600 }}
                         onClick={handleGoogleLogIn}
                         variant="outlined" type="submit" className="w-full">
                         <div className="flex gap-4 items-center">
@@ -91,7 +96,7 @@ const Login = () => {
                         </div>
                     </Button>
                 </div>
-                <p className="mt-3">Do not have an account?<Link to={'/register'}> Register here</Link></p>
+                <p className="mt-3">Do not have an account?<Link className="text-[#b774f5] font-semibold" to={'/register'}> Register here</Link></p>
             </form>
         </div>
     );

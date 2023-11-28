@@ -3,18 +3,19 @@ import FaqAccordion from "./FaqAccordion";
 
 const FaqSection = () => {
     return (
-        <div className="bg-[#f0f7f7] md:h-[800px] flex my-[60px]">
+        <div className="md:h-[800px] flex my-[60px] mx-auto">
             <div className="w-[70%] mx-auto lg:flex items-center justify-center gap-[50px] py-[150px] md:h-[92%] my-auto
-            lg:bg-[url('https://lovecare.smartdemowp.com/wp-content/themes/lovecare/assets/images/shapes/faq-2-dot.png')] bg-no-repeat bg-left-bottom">
-                <img src="https://lovecare.smartdemowp.com/wp-content/uploads/faq-2-1.jpeg" alt="" />
+            lg:bg-[url('https://i.ibb.co/sHpKNtc/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0014-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-bottom">
+                <img className="h-[700px]" src="https://i.ibb.co/z5K1h2H/wepik-export-20231127175755-Qlud.jpg" alt="" />
 
                 <div className="md:w-[80%]">
-                    <Title
-                    title={"Frequently asked questions"}
-                    subTitle={"Some questions our clients asks frequently"}
-                    ></Title>
-                    <p className="text-[#babfc2] mb-[10px]">Lovecare gives illimitable amenities to respect seniors so that they can feel free and independent. That is why people choose lovecare.</p>
+                    <div className="lg:w-[100%] flex flex-col items-center">
+                        <Title
+                            subTitle={"Some questions our clients asks frequently"}
+                        ></Title>
+                        <p className="text-[#babfc2] mb-[10px]">Lovecare gives illimitable amenities to respect seniors so that they can feel free and independent. That is why people choose lovecare.</p>
                     <FaqAccordion></FaqAccordion>
+                    </div>
                 </div>
             </div>
         </div>

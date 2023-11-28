@@ -9,6 +9,7 @@ import Dashboard from "../pages/DashBoard/Dashboard";
 import EmployeeDetails from "../pages/EmployeeDetails/EmployeeDetails";
 import PaymentHistory from "../pages/PaymentHistory/PaymentHistory";
 import WorkSheet from "../pages/WorkSheet/WorkSheet";
+import EmployeeList from "../pages/EmployeeList/EmployeeList";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: '/workSheet/:email',
                 element: <WorkSheet></WorkSheet>
+            },
+            {
+                path: '/employeeList',
+                element: <EmployeeList></EmployeeList>
             },
         ]
     },

@@ -2,14 +2,9 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -25,10 +20,6 @@ import ProfileDropDown from './ProfileDropDown';
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
-
-// const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 const Navbar = () => {
     const { user, loading } = useContext(AuthContext)
     //TODO
@@ -36,10 +27,11 @@ const Navbar = () => {
     //TODO
 
     const pages = <>
-        <NavLink className="nav-link mr-16" to="/dashboard">Dashboard</NavLink>
-        <NavLink className="nav-link mr-16" to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
-        <NavLink className="nav-link mr-16" to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
-        <NavLink className="nav-link mr-16" to="/contactUs">Contact us</NavLink>
+        <NavLink className="nav-link mr-16 " to="/dashboard">Dashboard</NavLink>
+        <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
+        <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
+        <NavLink className="nav-link mr-16 " to="/employeeList">Employee List</NavLink>
+        <NavLink className="nav-link mr-16 " to="/contactUs">Contact us</NavLink>
     </>
 
     const [state, setState] = React.useState({
@@ -56,6 +48,7 @@ const Navbar = () => {
 
         setState({ ...state, [anchor]: open });
     };
+
     const list = (anchor) => (
         <Box
             sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -77,11 +70,12 @@ const Navbar = () => {
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                {['Contact us'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                {/* <NavLink className="nav-link mr-16" to="/contactUs">Contact us</NavLink> */}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -91,20 +85,10 @@ const Navbar = () => {
         </Box>
     );
 
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
-
     return (
         <AppBar
-            color="success" className='h-[100px] bg-black flex items-center justify-center' position="static">
+            sx={{ bgcolor: '#4037a0' }}
+            className='h-[100px] flex items-center justify-center' position="static">
             <Container maxWidth="xl">
                 <Toolbar className='' disableGutters>
                     <Typography
@@ -115,9 +99,8 @@ const Navbar = () => {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-
+                            fontFamily: 'montserrat',
+                            fontWeight: 200,
                             color: '#292525',
                             textDecoration: 'none',
                         }}
@@ -126,10 +109,7 @@ const Navbar = () => {
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-
-
                         {/* //!toggle */}
-
                         <div>
                             {['left'].map((anchor) => (
                                 <React.Fragment key={anchor}>
@@ -147,9 +127,7 @@ const Navbar = () => {
                             ))}
                         </div>
                         {/* //!toggle */}
-
                     </Box>
-
                     <Typography
                         variant="h5"
                         noWrap
@@ -159,9 +137,9 @@ const Navbar = () => {
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            color: 'inherit',
+                            fontFamily: 'montserrat',
+                            fontWeight: 200,
+                            color: 'white',
                             textDecoration: 'none',
                         }}
                     >
@@ -170,9 +148,7 @@ const Navbar = () => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages}
                     </Box>
-
                     <Box sx={{ flexGrow: 0 }}>
-
                         {
                             !user && !loading ?
                                 <Link to="/login">Log in</Link>
