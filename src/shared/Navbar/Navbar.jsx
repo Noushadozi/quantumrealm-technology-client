@@ -14,10 +14,12 @@ import useGetUser from '../../hooks/useGetUser';
 
 const Navbar = () => {
     const { user, loading } = useAuth();
+    console.log(user)
 
     const { user: userInfo } = useGetUser();
+    
     const role = userInfo?.data[0]?.role;
-    console.log(role);
+    console.log(userInfo)
 
     const pages = <>
         {/* HR */}

@@ -19,8 +19,7 @@ const Login = () => {
 
     const onSubmit = async (data) => {
         logIn(data.email, data.password)
-            .then(res => {
-                console.log(res);
+            .then(() => {
                 navigate('/');
                 Swal.fire({
                     position: "top-end",
@@ -37,8 +36,7 @@ const Login = () => {
 
     const handleGoogleLogIn = () => {
         googleSignIn()
-            .then(res => {
-                console.log(res);
+            .then(() => {
                 navigate('/');
                 Swal.fire({
                     position: "top-end",
@@ -85,7 +83,7 @@ const Login = () => {
                 </div>
                 <div className="mt-[20px] w-[80%]">
                     <Button
-                        sx={{ color: '#e9bafb', border: '2px solid #e9bafb',fontWeight: 600 }}
+                        sx={{ color: '#e9bafb', border: '2px solid #e9bafb', fontWeight: 600 }}
                         onClick={handleGoogleLogIn}
                         variant="outlined" type="submit" className="w-full">
                         <div className="flex gap-4 items-center">

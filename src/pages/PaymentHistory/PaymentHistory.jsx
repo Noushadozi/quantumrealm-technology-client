@@ -1,20 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import { flexRender, useReactTable, getCoreRowModel } from "@tanstack/react-table";
 import { paymentHistoryColumnDef } from "./PaymentTableColumn";
 import Title from "../../ui/Title";
+import useAuth from "../../hooks/useAuth";
 
 const PaymentHistory = () => {
+    const { user, loading } = useAuth();
     const axiosPublic = useAxiosPublic();
-    const { user, loading } = useContext(AuthContext);
 
     const { data, isLoading } = useQuery({
         queryKey: ['user', user],
         queryFn: () => axiosPublic(`/usersInfo/${user.email}`)
     })
-
+    
     const tableInstance = useReactTable({
         data: data?.data[0]?.payments,
         columns: paymentHistoryColumnDef,

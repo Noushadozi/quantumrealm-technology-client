@@ -5,15 +5,17 @@ import { employeeListCol } from "./EmployeeListColumn";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 
 const EmployeeList = () => {
+
     const axiosPublic = useAxiosPublic();
     const { remove } = useContext(AuthContext);
 
     const { refetch, data: allVerified = [], isLoading } = useQuery({
         queryKey: ['all-verified'],
-        queryFn: () => axiosPublic(`/all-verified-employee`)
+        queryFn: () => axios(`http://localhost:5000/all-verified-employee`, { withCredentials: true })
     })
 
     console.log(allVerified.data);

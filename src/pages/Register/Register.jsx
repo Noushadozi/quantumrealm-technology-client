@@ -72,7 +72,7 @@ const Register = () => {
                                 verified: false,
                                 designation: designation,
                             }
-                            console.log(name, res.data.data.display_url)
+                            console.log(name, res.data.data.display_url, selected.name, bank_account,)
                             update(name, res.data.data.display_url)
                                 .then(res => {
                                     console.log(res)
