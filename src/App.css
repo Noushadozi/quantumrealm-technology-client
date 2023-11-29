@@ -1,8 +1,8 @@
 .nav-link {
-    font-size: 18px;
+    font-size: 14px;
     color: #e1e1e1;
     font-family: inherit;
-    font-weight: 800;
+    font-weight: 300;
     cursor: pointer;
     position: relative;
     border: none;
@@ -11,11 +11,13 @@
     transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
     transition-duration: 400ms;
     transition-property: color;
+    white-space: nowrap;
 }
 
 .nav-link:focus,
 .nav-link:hover {
-    color: #ff5e3a;
+    color: #e9bafb;
+    
 }
 
 .nav-link:focus:after,
@@ -27,7 +29,7 @@
 .nav-link:after {
     content: "";
     pointer-events: none;
-    background: #ff5e3a;
+    background: #e9bafb;
     bottom: -2px;
     left: 50%;
     position: absolute;

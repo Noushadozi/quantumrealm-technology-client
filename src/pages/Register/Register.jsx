@@ -193,8 +193,8 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="mt-[10px] w-[80%]">
-                    <Button
-                        sx={{ color: '#b774f5', border: '2px solid #b774f5', fontWeight: 600 }}
+                    <Button 
+                        sx={{ color: '#e9bafb', border: '2px solid #e9bafb', fontWeight: 600 }}
                         component="label" variant="outlined" startIcon={<CloudUploadIcon />}>
                         Upload Photo
                         <VisuallyHiddenInput
@@ -205,12 +205,12 @@ const Register = () => {
                 <p className="text-[#e96969] font-semibold mt-2 text-[14px]">{error}</p>
                 <div className="mt-[35px] w-[80%]">
                     <Button
-                        sx={{ color: '#001f4b', bgcolor: '#b774f5', fontWeight: 600 }}
+                        sx={{ color: '#001f4b', bgcolor: '#e9bafb', fontWeight: 600 }}
                         variant="contained" type="submit" className="w-full">Register</Button>
                 </div>
                 <div className="mt-[20px] w-[80%]">
                     <Button
-                        sx={{ color: '#b774f5', border: '2px solid #b774f5', fontWeight: 600 }}
+                        sx={{ color: '#e9bafb', border: '2px solid #e9bafb', fontWeight: 600 }}
                         onClick={handleGoogleLogIn}
                         variant="outlined" type="submit" className="w-full">
                         <div className="flex gap-4 items-center">
@@ -219,7 +219,7 @@ const Register = () => {
                         </div>
                     </Button>
                 </div>
-                <p className="mt-3">Already have an account?<Link className="text-[#b774f5] font-semibold" to={'/login'}> Login here</Link></p>
+                <p className="mt-3">Already have an account?<Link className="text-[#e9bafb] font-semibold" to={'/login'}> Login here</Link></p>
             </form>
         </div>
     );

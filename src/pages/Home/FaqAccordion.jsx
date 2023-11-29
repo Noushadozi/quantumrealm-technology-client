@@ -19,11 +19,13 @@ const FaqAccordion = () => {
                 [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
                     transform: 'rotate(45deg)',
                 },
+                borderRadius: '15px'
             }}
         >
-            <Accordion className="bg-[#8d98fa] rounded">
+            <Accordion
+                className="bg-[#e9bafb] rounded">
                 <AccordionSummary indicator={
-                    <div className='bg-[#4e3bb1] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
+                    <div className='bg-[#4037a0] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
                         <AddIcon className='text-white' />
                     </div>
                 }>Do you provide ongoing support for your software products?</AccordionSummary>
@@ -31,9 +33,9 @@ const FaqAccordion = () => {
                     Absolutely. We offer comprehensive support and maintenance services to ensure the continued performance and security of our software products. Our dedicated support team is ready to assist you.
                 </AccordionDetails>
             </Accordion>
-            <Accordion className="bg-[white]">
+            <Accordion className="bg-[#e9bafb]">
                 <AccordionSummary indicator={
-                    <div className='bg-[#5bb286] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
+                    <div className='bg-[#4037a0] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
                         <AddIcon className='text-white' />
                     </div>
                 }>What industries does your software solutions cater to?</AccordionSummary>
@@ -41,9 +43,9 @@ const FaqAccordion = () => {
                     Our software solutions are versatile and cater to various industries such as healthcare, finance, logistics, education, hospitality, and more. We customize solutions to meet specific industry needs.
                 </AccordionDetails>
             </Accordion>
-            <Accordion className="bg-[white]">
+            <Accordion className="bg-[#e9bafb]">
                 <AccordionSummary indicator={
-                    <div className='bg-[#5bb286] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
+                    <div className='bg-[#4037a0] flex items-center justify-center h-[35px] w-[35px] p-1 rounded-[35px]'>
                         <AddIcon className='text-white' />
                     </div>
                 }>How do I stay updated on new releases and updates?</AccordionSummary>

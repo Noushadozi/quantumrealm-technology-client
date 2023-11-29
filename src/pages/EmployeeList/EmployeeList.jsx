@@ -4,6 +4,7 @@ import { flexRender, useReactTable, getCoreRowModel } from "@tanstack/react-tabl
 import { employeeListCol } from "./EmployeeListColumn";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const EmployeeList = () => {
@@ -42,22 +43,38 @@ const EmployeeList = () => {
                     })
             }
             else if (column.columnDef.header === 'Promote') {
-                //
-                console.log('promote', rowData._id)
-                axiosPublic.patch(`/user-promote/${rowData._id}`)
-                    .then(res => {
-                        console.log(res.data);
-                        refetch();
-                    })
+                if (rowData.role === "Employee") {
+                    Swal.fire({
+                        title: `Promote ${rowData.name} to HR?`,
+                        text: "You won't be able to revert this!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#00d26a",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, promote"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: "Promoted",
+                                text: `${rowData.name} has been promoted to HR`,
+                                icon: "success"
+                            });
+                            axiosPublic.patch(`/user-promote/${rowData._id}`)
+                                .then(res => {
+                                    console.log(res.data);
+                                    refetch();
+                                })
+                        }
+                    });
+                }
             }
         }
     };
 
-
     return (
         <div>
-            <div className="w-[80%] px-[80px] mx-auto my-[100px] bg-[url('https://i.ibb.co/bvPcW0q/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0016-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-top">
-                { //
+            <div className="w-[80%] px-[80px] mx-auto py-[100px] my-[100px] bg-[url('https://i.ibb.co/bvPcW0q/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0016-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-top">
+                {
                     !isLoading && <table>
                         <thead>
                             {tableInstance.getHeaderGroups().map((headerEl, index) => {

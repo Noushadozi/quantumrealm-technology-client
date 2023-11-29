@@ -27,10 +27,24 @@ const Navbar = () => {
     //TODO
 
     const pages = <>
-        <NavLink className="nav-link mr-16 " to="/dashboard">Dashboard</NavLink>
-        <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
-        <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
-        <NavLink className="nav-link mr-16 " to="/employeeList">Employee List</NavLink>
+        {/* HR */}
+        {
+            <NavLink className="nav-link mr-16 " to="/dashboard">Dashboard</NavLink>
+        }
+
+        {/* Employee */}
+        {
+            <>
+                <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
+                <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
+            </>
+        }
+
+        {/* Admin */}
+        {
+            <NavLink className="nav-link mr-16 " to="/employeeList">Employee List</NavLink>
+        }
+        
         <NavLink className="nav-link mr-16 " to="/contactUs">Contact us</NavLink>
     </>
 
@@ -48,42 +62,6 @@ const Navbar = () => {
 
         setState({ ...state, [anchor]: open });
     };
-
-    const list = (anchor) => (
-        <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-            role="presentation"
-            onClick={toggleDrawer(anchor, false)}
-            onKeyDown={toggleDrawer(anchor, false)}
-        >
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['Contact us'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                                {/* <NavLink className="nav-link mr-16" to="/contactUs">Contact us</NavLink> */}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
 
     return (
         <AppBar
@@ -105,7 +83,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        <Link to={'/'}>Employee Management</Link>
+                        <Link to={'/'}><img className='shrink-0 min-w-[200px]' src="../../../public/Screenshot 2023-11-28 202003.png" alt="" /></Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -117,11 +95,15 @@ const Navbar = () => {
                                         <HiOutlineMenuAlt1 className='text-3xl text-[#8aca8a]' />
                                     </Button>
                                     <Drawer
+                                        sx={{}}
                                         anchor={anchor}
                                         open={state[anchor]}
                                         onClose={toggleDrawer(anchor, false)}
                                     >
-                                        {list(anchor)}
+                                        {/* {list(anchor)} */}
+                                        <div className='flex flex-col bg-[#4037a0] h-full space-y-2 p-[15px]'>
+                                            {pages}
+                                        </div>
                                     </Drawer>
                                 </React.Fragment>
                             ))}
@@ -143,7 +125,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        Employee Management
+                        <Link to="/"><img src="../../../public/Screenshot 2023-11-28 202003.png" alt="" /></Link>
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages}
@@ -151,7 +133,7 @@ const Navbar = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         {
                             !user && !loading ?
-                                <Link to="/login">Log in</Link>
+                                <button className='btn whitespace-nowrap bg-[#e9bafb] font-semibold text-xl p-2 rounded-xl'><Link to="/login">Log in</Link></button>
                                 :
                                 <ProfileDropDown
                                     user={user}

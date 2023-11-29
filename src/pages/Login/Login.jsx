@@ -81,11 +81,11 @@ const Login = () => {
                 <p className="text-[#e96969] font-semibold mt-2 text-[14px]">{error}</p>
                 <div className="mt-[40px] w-[80%]">
                     <Button
-                        sx={{ color: '#001f4b', bgcolor: '#b774f5', fontWeight: 600 }} variant="contained" type="submit" className="w-full">Log In</Button>
+                        sx={{ color: '#001f4b', bgcolor: '#e9bafb', fontWeight: 600 }} variant="contained" type="submit" className="w-full">Log In</Button>
                 </div>
                 <div className="mt-[20px] w-[80%]">
                     <Button
-                        sx={{ color: '#b774f5', border: '2px solid #b774f5',fontWeight: 600 }}
+                        sx={{ color: '#e9bafb', border: '2px solid #e9bafb',fontWeight: 600 }}
                         onClick={handleGoogleLogIn}
                         variant="outlined" type="submit" className="w-full">
                         <div className="flex gap-4 items-center">
@@ -96,7 +96,7 @@ const Login = () => {
                         </div>
                     </Button>
                 </div>
-                <p className="mt-3">Do not have an account?<Link className="text-[#b774f5] font-semibold" to={'/register'}> Register here</Link></p>
+                <p className="mt-3">Do not have an account?<Link className="text-[#e9bafb] font-semibold" to={'/register'}> Register here</Link></p>
             </form>
         </div>
     );

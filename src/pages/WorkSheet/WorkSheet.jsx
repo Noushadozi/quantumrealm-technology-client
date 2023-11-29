@@ -79,8 +79,8 @@ const WorkSheet = () => {
     }
 
     return (
-        <div className="bg-[url('https://i.ibb.co/Jj7jRhF/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0012-Photo-Room-png-Phot.png')] bg-no-repeat bg-right">
-            <div className="flex flex-col">
+        <div className="bg-[url('https://i.ibb.co/Jj7jRhF/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0012-Photo-Room-png-Phot.png')] bg-no-repeat bg-right xl:mx-[150px]">
+            <div className="flex flex-col mb-[100px]">
                 <form onSubmit={handleSubmit(onSubmit)}
                     className="mt-[150px] mx-auto flex flex-col items-center justify-center w-[400px] md:w-[500px] bg-[white] rounded-lg pt-5 pb-12 bg-gradient-to-r from-[#14abe3] to-[#00fce7] text-[#001f4b]">
                     <div className="my-[20px] w-[60%]">

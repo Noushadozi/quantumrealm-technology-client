@@ -92,7 +92,7 @@ const EmployeeTable = () => {
     }, [users.data]);
 
     return (
-        <div className="mt-[60px] pb-[50px] bg-[url('https://i.ibb.co/gJBZzgk/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0017-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-bottom">
+        <div className="mt-[60px] pb-[50px] bg-[url('https://i.ibb.co/gJBZzgk/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0017-Photo-Room-png-Phot.png')] bg-no-repeat bg-right-bottom xl:mx-[150px]">
             <Title
                 title={'HR Dashboard'}
             ></Title>
