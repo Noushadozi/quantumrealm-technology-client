@@ -11,7 +11,7 @@ const PaymentHistory = () => {
     const { user, loading } = useContext(AuthContext);
 
     const { data, isLoading } = useQuery({
-        queryKey: ['user', user.email],
+        queryKey: ['user', user],
         queryFn: () => axiosPublic(`/usersInfo/${user.email}`)
     })
 
@@ -23,7 +23,7 @@ const PaymentHistory = () => {
 
     if (isLoading) {
         return
-    } 
+    }
 
     console.log(data?.data[0]?.payments);
 

@@ -6,34 +6,29 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import { Link, NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropDown';
-import { useContext } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
+import useAuth from '../../hooks/useAuth';
+import useGetUser from '../../hooks/useGetUser';
 
 const Navbar = () => {
-    const { user, loading } = useContext(AuthContext)
-    //TODO
-    // let user = false;
-    //TODO
+    const { user, loading } = useAuth();
+
+    const { user: userInfo } = useGetUser();
+    const role = userInfo?.data[0]?.role;
+    console.log(role);
 
     const pages = <>
         {/* HR */}
         {
+            role === "HR" &&
             <NavLink className="nav-link mr-16 " to="/dashboard">Dashboard</NavLink>
         }
 
         {/* Employee */}
         {
+            role === "Employee" &&
             <>
                 <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
                 <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
@@ -42,9 +37,9 @@ const Navbar = () => {
 
         {/* Admin */}
         {
+            role === "Admin" &&
             <NavLink className="nav-link mr-16 " to="/employeeList">Employee List</NavLink>
         }
-        
         <NavLink className="nav-link mr-16 " to="/contactUs">Contact us</NavLink>
     </>
 
