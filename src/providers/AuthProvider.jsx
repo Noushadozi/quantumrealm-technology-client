@@ -42,14 +42,14 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             const userInfo = { email: currentUser?.email }
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', userInfo, { withCredentials: true })
+                axios.post('https://quantumrealm-technology-server.vercel.app/jwt', userInfo, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data)
                     });
                 setLoading(false);
             }
             else {
-                axios.post('http://localhost:5000/logOut', userInfo, { withCredentials: true })
+                axios.post('https://quantumrealm-technology-server.vercel.app/logOut', userInfo, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data)
                     });

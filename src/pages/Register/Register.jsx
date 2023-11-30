@@ -22,7 +22,6 @@ const Register = () => {
         role: [
             { name: 'Employee' },
             { name: 'HR' },
-            { name: 'Admin' },
         ]
     }
     const [selected, setSelected] = useState(roleObj.role[0])

@@ -49,7 +49,7 @@ const WorkSheet = () => {
             date: date.toString().slice(4, 15)
         }
         
-        const tasks = userData?.data[0]?.tasks;
+        const tasks = userData?.data[0]?.tasks || [];
 
         tasks.unshift(taskInfo);
 

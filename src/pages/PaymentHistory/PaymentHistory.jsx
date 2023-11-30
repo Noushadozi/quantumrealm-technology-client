@@ -15,7 +15,7 @@ const PaymentHistory = () => {
     })
 
     const tableInstance = useReactTable({
-        data: data?.data[0]?.payments,
+        data: data?.data[0]?.payments || [],
         columns: paymentHistoryColumnDef,
         getCoreRowModel: getCoreRowModel(),
     }, [data?.data[0]?.payments]);

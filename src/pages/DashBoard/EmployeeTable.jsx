@@ -69,7 +69,7 @@ const EmployeeTable = () => {
                             payment: payment
                         }
                         let payments = rowData.payments || [];
-                        payments.unshift(paymentInfo)
+                        payments.push(paymentInfo)
                         axiosSecure.patch(`/user-payment/${rowData._id}`, payments)
                             .then(res => {
                                 console.log(res)
@@ -78,7 +78,6 @@ const EmployeeTable = () => {
                 });
             }
             else if (column.columnDef.header === 'Details') {
-                console.log('details');
                 navigate(`/employeeDetails/${rowData._id}`)
             }
         }
