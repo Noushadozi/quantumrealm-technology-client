@@ -1,25 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form"
 import FormControl from '@mui/material/FormControl';
-import { Divider, FormHelperText, Input, InputLabel } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { Input, InputLabel } from "@mui/material";
 import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import WorkSheetSelect from "./WorkSheetSelect";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import WorkSheetTable from "./WorkSheetTable";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const WorkSheet = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors }, } = useForm();
+    const [date, setDate] = useState(new Date());
     const tasks = [
         { name: 'Software Development' },
         { name: 'Ai Services' },
@@ -34,39 +31,34 @@ const WorkSheet = () => {
         { name: 'Paper-work' }
     ]
     const [selectedTask, setSelectedTask] = useState(tasks[0])
-    const [date, setDate] = useState(new Date());
+    
 
     const { refetch, data: userData = [], isLoading } = useQuery({
-        queryKey: ['user', user.email],
-        queryFn: () => axiosPublic(`/usersInfo/${user.email}`)
+        queryKey: ['user'],
+        queryFn: () => axiosSecure(`/privateInfo/${user.email}`)
     })
 
     if (isLoading) {
         return <progress></progress>
     }
 
-    // console.log(userData.data[0]);
-
-    console.log(userData?.data[0]);
-    
     const onSubmit = async (data) => {
         const taskInfo = {
             task: selectedTask.name,
             duration: data.hours,
             date: date.toString().slice(4, 15)
         }
-        let tasks = userData?.data[0]?.tasks || [];
+        
+        const tasks = userData?.data[0]?.tasks;
 
         tasks.unshift(taskInfo);
 
-        console.log(userData?.data[0]?.task);
-        axiosPublic.patch(`/userTask/${user.email}`, tasks)
+        axiosSecure.patch(`/userTask/${user.email}`, tasks)
             .then(res => {
-                console.log();
+                console.log(res);
                 if (res.data.acknowledged) {
                     refetch()
                     refetch()
-                    console.log(userData?.data[0]);
                     Swal.fire({
                         position: "top-end",
                         icon: "success",

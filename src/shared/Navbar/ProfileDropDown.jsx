@@ -1,27 +1,22 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Fragment, useContext, useEffect, useRef, useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Fragment, useContext } from 'react'
 import Avatar from '@mui/joy/Avatar';
-import Box from '@mui/joy/Box';
 import { AuthContext } from "../../providers/AuthProvider";
 import { BounceLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
-const links = [
-    { href: '/account-settings', label: 'Account settings' },
-    { href: '/support', label: 'Support' },
-    { href: '/license', label: 'License' },
-    { href: '/sign-out', label: 'Sign out' },
-]
-
-const ProfileDropDown = ({ user, }) => {
+const ProfileDropDown = ({ user }) => {
     const { logOut, loading } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleLogOut = () => {
         logOut()
             .then(res => {
-                console.log(res)
+                console.log(res);
+                navigate('/');
+
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
             })
     }
 
@@ -33,7 +28,7 @@ const ProfileDropDown = ({ user, }) => {
                     <Menu.Button>
                         {
                             !loading ?
-                                <Avatar src={user.photoURL} size="lg" variant="soft" />
+                                <Avatar src={user?.photoURL} size="lg" variant="soft" />
                                 :
                                 <BounceLoader
                                     color={'#fff'}
@@ -67,7 +62,7 @@ const ProfileDropDown = ({ user, }) => {
 
                                     {
                                         !loading &&
-                                        <p>{user.displayName}</p>
+                                        <p>{user?.displayName}</p>
                                     }
                                 </div>
 
@@ -82,7 +77,7 @@ const ProfileDropDown = ({ user, }) => {
                                     </svg>
                                     {
                                         !loading &&
-                                        <p>{user.email}</p>
+                                        <p>{user?.email}</p>
                                     }
                                 </div>
                             </Menu.Item>

@@ -5,20 +5,19 @@ import { employeeListCol } from "./EmployeeListColumn";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const EmployeeList = () => {
 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { remove } = useContext(AuthContext);
 
     const { refetch, data: allVerified = [], isLoading } = useQuery({
         queryKey: ['all-verified'],
-        queryFn: () => axios(`http://localhost:5000/all-verified-employee`, { withCredentials: true })
+        queryFn: () => axiosSecure(`/all-verified-employee`)
     })
-
-    console.log(allVerified.data);
 
     const tableInstance = useReactTable({
         data: allVerified.data,
@@ -41,6 +40,7 @@ const EmployeeList = () => {
                         refetch();
                         remove()
                             .then(res => {
+
                             })
                     })
             }

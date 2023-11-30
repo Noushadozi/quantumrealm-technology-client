@@ -2,24 +2,24 @@ import { flexRender, useReactTable, getCoreRowModel } from "@tanstack/react-tabl
 import './Table.css';
 import { columnDef } from "./TableColumn";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../ui/Title";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const EmployeeTable = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure()
     const navigate = useNavigate();
 
     const { refetch, data: users = [], isLoading } = useQuery({
         queryKey: ['users'],
-        queryFn: () => axiosPublic.get("/users")
+        queryFn: () => axiosSecure.get("/employees")
     })
 
     const handleCellClick = (rowData, column) => {
         if (column.columnDef && column.columnDef.onClick && typeof column.columnDef.onClick === 'function') {
             if (column.columnDef.header === 'Verified') {
-                axiosPublic.patch(`/user-verification/${rowData._id}`, { verified: rowData.verified })
+                axiosSecure.patch(`/user-verification/${rowData._id}`, { verified: rowData.verified })
                     .then(res => {
                         console.log(res)
                         refetch();
@@ -70,8 +70,7 @@ const EmployeeTable = () => {
                         }
                         let payments = rowData.payments || [];
                         payments.unshift(paymentInfo)
-                        console.log(payments)
-                        axiosPublic.patch(`/user-payment/${rowData._id}`, payments)
+                        axiosSecure.patch(`/user-payment/${rowData._id}`, payments)
                             .then(res => {
                                 console.log(res)
                             })

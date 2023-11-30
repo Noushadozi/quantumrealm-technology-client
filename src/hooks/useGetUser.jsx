@@ -3,13 +3,13 @@ import useAuth from "./useAuth";
 import useAxiosPublic from "./useAxiosPublic";
 
 const useGetUser = () => {
-    const { user: loggedInUser, loading } = useAuth();
+    const { user: loggedInUser, loading: loggedInUserLoading } = useAuth();
     const axiosPublic = useAxiosPublic();
 
     const { data: user, isLoading } = useQuery({
-        queryKey: ['user'],
-        enabled: !loading,
-        queryFn: () => axiosPublic(`/usersInfo/${loggedInUser.email}`)
+        queryKey: ['user', loggedInUser?.email],
+        enabled: !loggedInUserLoading,
+        queryFn: () => axiosPublic.get(`/usersInfo/${loggedInUser.email}`)
     })
 
     return { user, isLoading }

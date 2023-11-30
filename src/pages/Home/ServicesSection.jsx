@@ -39,7 +39,7 @@ const ServicesSection = () => {
                         <div className='flex flex-col items-center justify-center shadow-xl shadow-[#6444d1] rounded-lg text-[#001f4b] h-[400px] bg-gradient-to-r from-[#14abe3] to-[#00fce7] mb-[50px]'>
 
                             <img className='px-[40px] pt-[20px] md:px-[60px] md:pt-[25px] lg:px-[70px] lg:pt-[30px] max-h-[250px]' src={service.image_url} alt="" />
-                            <h2 className='text-[23px] font-bold my-3'>{service.title}</h2>
+                            <h2 className='text-[23px] font-bold my-3 text-center'>{service.title}</h2>
                             <p className='text-[15px] text-center mb-4 w-[80%]'>{service.subtitle}</p>
                         </div>
                     </SwiperSlide>)

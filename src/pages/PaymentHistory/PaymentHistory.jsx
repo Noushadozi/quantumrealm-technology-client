@@ -1,19 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { flexRender, useReactTable, getCoreRowModel } from "@tanstack/react-table";
 import { paymentHistoryColumnDef } from "./PaymentTableColumn";
 import Title from "../../ui/Title";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const PaymentHistory = () => {
-    const { user, loading } = useAuth();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
 
     const { data, isLoading } = useQuery({
-        queryKey: ['user', user],
-        queryFn: () => axiosPublic(`/usersInfo/${user.email}`)
+        queryKey: ['user', user?.email],
+        queryFn: () => axiosSecure.get(`/privateInfo/${user.email}`)
     })
-    
+
     const tableInstance = useReactTable({
         data: data?.data[0]?.payments,
         columns: paymentHistoryColumnDef,
@@ -24,7 +24,6 @@ const PaymentHistory = () => {
         return
     }
 
-    console.log(data?.data[0]?.payments);
 
     return (
         <div className="mt-[50px] xl:mx-[150px] pb-[80px] bg-[url('https://i.ibb.co/GQ57fvD/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0003-Photo-Room-png-Phot.png')] bg-no-repeat bg-left-top">

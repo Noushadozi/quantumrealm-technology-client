@@ -1,19 +1,14 @@
-import { useContext } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { AuthContext } from "../../providers/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
 import { flexRender, getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { workSheetTableColumnDef } from "./WorkSheetTableCoumn";
 
 const WorkSheetTable = ({ data, isLoading }) => {
-    const axiosPublic = useAxiosPublic();
-    const { user } = useContext(AuthContext);
-
 
 
     const tasks = data?.data[0]?.tasks || [];
+
     const tableInstance = useReactTable({
         data: tasks,
+        enabled: !isLoading,
         columns: workSheetTableColumnDef,
         getCoreRowModel: getCoreRowModel(),
     }, [tasks]);
@@ -21,7 +16,7 @@ const WorkSheetTable = ({ data, isLoading }) => {
     if (isLoading) {
         return <progress></progress>
     }
-    // console.log(data?.data[0]?.tasks);
+    console.log(data);
 
     return (
         <div className="mt-[50px]">

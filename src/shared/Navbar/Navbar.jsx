@@ -14,12 +14,10 @@ import useGetUser from '../../hooks/useGetUser';
 
 const Navbar = () => {
     const { user, loading } = useAuth();
-    console.log(user)
 
     const { user: userInfo } = useGetUser();
     
     const role = userInfo?.data[0]?.role;
-    console.log(userInfo)
 
     const pages = <>
         {/* HR */}
@@ -80,7 +78,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        <Link to={'/'}><img className='shrink-0 min-w-[200px]' src="../../../public/Screenshot 2023-11-28 202003.png" alt="" /></Link>
+                        <Link to={'/'}><img className='shrink-0 min-w-[200px]' src="logo.png" alt="" /></Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -122,7 +120,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        <Link to="/"><img src="../../../public/Screenshot 2023-11-28 202003.png" alt="" /></Link>
+                        <Link to="/"><img src="logo.png" alt="" /></Link>
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages}
