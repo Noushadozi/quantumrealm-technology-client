@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import FormControl from '@mui/material/FormControl';
-import { Divider, FormHelperText, Input, InputLabel } from "@mui/material";
+import { Input, InputLabel } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -21,7 +21,7 @@ const Register = () => {
     const roleObj = {
         role: [
             { name: 'Employee' },
-            { name: 'HR' },
+            { name: 'HR' }
         ]
     }
     const [selected, setSelected] = useState(roleObj.role[0])
@@ -50,6 +50,10 @@ const Register = () => {
         const salary = data.salary;
         const designation = data.designation;
         const bank_account = data.bank_account;
+        if (!/^(?=.*[A-Z])(?=.*[@#$%^&+=!]).{6,}$/.test(data.password)) {
+            setError('Password should have at least 6 character, a capital letter and one special character.')
+            return;
+        }
         createUser(email, data.password)
             .then(async (res) => {
                 console.log(res.user)
@@ -71,7 +75,8 @@ const Register = () => {
                                 verified: false,
                                 designation: designation,
                             }
-                            console.log(name, res.data.data.display_url, selected.name, bank_account,)
+                            console.log(name, res.data.data.display_url, selected.name, bank_account)
+                            console.log(userInfo)
                             update(name, res.data.data.display_url)
                                 .then(res => {
                                     console.log(res)
@@ -83,8 +88,8 @@ const Register = () => {
                                             navigate('/');
                                             Swal.fire({
                                                 position: "top-end",
-                                                icon: "success",
-                                                title: "Your work has been saved",
+                                                icon: "Registered successfully",
+                                                title: "Your account has been created",
                                                 showConfirmButton: false,
                                                 timer: 1500
                                             });
@@ -192,7 +197,7 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="mt-[10px] w-[80%]">
-                    <Button 
+                    <Button
                         sx={{ color: '#e9bafb', border: '2px solid #e9bafb', fontWeight: 600 }}
                         component="label" variant="outlined" startIcon={<CloudUploadIcon />}>
                         Upload Photo

@@ -15,9 +15,10 @@ const EmployeeList = () => {
     const { remove } = useContext(AuthContext);
 
     const { refetch, data: allVerified = [], isLoading } = useQuery({
-        queryKey: ['all-verified'],
+        queryKey: ['all-verified-employee'],
         queryFn: () => axiosSecure(`/all-verified-employee`)
     })
+    console.log(allVerified.data)
 
     const tableInstance = useReactTable({
         data: allVerified.data,
@@ -38,10 +39,10 @@ const EmployeeList = () => {
                     .then(res => {
                         console.log(res);
                         refetch();
-                        remove()
-                            .then(res => {
+                        // remove()
+                        //     .then(res => {
 
-                            })
+                        //     })
                     })
             }
             else if (column.columnDef.header === 'Promote') {
