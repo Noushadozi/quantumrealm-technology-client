@@ -151,7 +151,6 @@ const Register = () => {
                                     name="name" aria-describedby="my-helper-text" />
                             </FormControl>
                         </div>
-
                         <div className="my-[20px] w-[80%]">
                             <FormControl fullWidth>
                                 <InputLabel htmlFor="my-input">Email</InputLabel>

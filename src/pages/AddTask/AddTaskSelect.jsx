@@ -4,12 +4,12 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 
 
-const WorkSheetSelect = ({ tasks,selected,setSelected }) => {
+const AddTaskSelect = ({ tasks,selected,setSelected }) => {
     
 
     return (
         <>
-            <div className="static top-16 w-72">
+            <div className="static top-16 w-[100%]">
                 <Listbox value={selected} onChange={setSelected}>
                     <div className="relative mt-1 z-50">
                         <Listbox.Button className="relative w-full cursor-default rounded-lg bg-gradient-to-r from-[#a9b6e2] to-[#c9f3c1] text-[#001f4b] py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -32,7 +32,7 @@ const WorkSheetSelect = ({ tasks,selected,setSelected }) => {
                                     <Listbox.Option
                                         key={personIdx}
                                         className={({ active }) =>
-                                            `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
+                                            `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-[#c9f3c1]  text-[#001f4b]' : 'text-gray-900'
                                             }`
                                         }
                                         value={person}
@@ -65,4 +65,4 @@ const WorkSheetSelect = ({ tasks,selected,setSelected }) => {
     );
 };
 
-export default WorkSheetSelect;
+export default AddTaskSelect;

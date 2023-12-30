@@ -19,33 +19,32 @@ const HomeBanner = () => {
                 }}
                 modules={[Autoplay, Scrollbar]}
                 autoplay={{
-                    delay: 200000,
+                    delay: 2000,
                     disableOnInteraction: false,
                 }}
                 className="mySwiper"
             >
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/nBYJSTx/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0001.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/K76qQVH/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0001.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/mh618Gc/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0003.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/Jym2g5Y/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0002.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/8jyXYmj/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0002.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/87McZ3X/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0003.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/KmSvDtB/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0006.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/qBSfP6W/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0004.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/HBzF3BQ/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0001.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/CJK7C7J/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0005.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/WtchWfH/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0005.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/nQFfFw2/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0006.jpg" alt="" />
                 </SwiperSlide>
                 <SwiperSlide>
-                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/hsNDzSh/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-1-page-0007.jpg" alt="" />
+                        <img className='w-full object-cover bg-center' src="https://i.ibb.co/PZX5LS2/Blue-Purple-Futuristic-Modern-3-D-Tech-Company-Business-Presentation-page-0007.jpg" alt="" />
                 </SwiperSlide>
-            
             </Swiper>
         </div>
     );

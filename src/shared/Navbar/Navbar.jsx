@@ -31,7 +31,8 @@ const Navbar = () => {
             role === "Employee" &&
             <>
                 <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
-                <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Work Sheet</NavLink>
+                <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Task Sheet</NavLink>
+                <NavLink className="nav-link mr-16 " to={`/addTask`}>Add Task</NavLink>
             </>
         }
 

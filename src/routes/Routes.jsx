@@ -10,6 +10,8 @@ import EmployeeDetails from "../pages/EmployeeDetails/EmployeeDetails";
 import PaymentHistory from "../pages/PaymentHistory/PaymentHistory";
 import WorkSheet from "../pages/WorkSheet/WorkSheet";
 import EmployeeList from "../pages/EmployeeList/EmployeeList";
+import AddTask from "../pages/AddTask/AddTask";
+import UpdateTask from "../pages/UpdateTask/UpdateTask";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
             {
                 path: '/paymentHistory/:email',
                 element: <PaymentHistory></PaymentHistory>
+            },
+            {
+                path: '/addTask',
+                element: <AddTask></AddTask>
+            },
+            {
+                path: '/UpdateTask/:id',
+                element: <UpdateTask></UpdateTask>
             },
             {
                 path: '/workSheet/:email',
