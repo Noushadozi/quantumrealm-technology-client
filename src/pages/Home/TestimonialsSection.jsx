@@ -5,10 +5,14 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import { Avatar } from '@mui/joy';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import PulseLoader from 'react-spinners/PulseLoader';
+import { useState } from 'react';
 
 
 const TestimonialsSection = () => {
     const axiosPublic = useAxiosPublic();
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#e9bafb");
 
     const { data: reviewsData, isLoading } = useQuery({
         queryKey: ['reviews'],
@@ -16,7 +20,15 @@ const TestimonialsSection = () => {
     })
 
     if (isLoading) {
-        return <progress></progress>
+        return <div className="text-center mt-[150px]">
+        <PulseLoader
+            color={color}
+            loading={loading}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+    </div>
     }
 
     return (

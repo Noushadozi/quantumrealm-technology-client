@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import "react-datepicker/dist/react-datepicker.css";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import TaskSheetTab from "./TaskSheetTab";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import PulseLoader from "react-spinners/PulseLoader";
 
 const WorkSheet = () => {
-    const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
-    const { user, loading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const email = user?.email;
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#e9bafb");
 
     const { refetch, data, isLoading } = useQuery({
         queryKey: ['tasks', email],
@@ -20,7 +21,15 @@ const WorkSheet = () => {
     })
 
     if (isLoading) {
-        return 
+        return <div className="text-center mt-[150px]">
+            <PulseLoader
+                color={color}
+                loading={loading}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+        </div>
     }
 
     const TODO = data?.data.filter(task => task.status === "TODO");

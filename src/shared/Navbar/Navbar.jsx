@@ -11,12 +11,13 @@ import { Link, NavLink } from 'react-router-dom';
 import ProfileDropDown from './ProfileDropDown';
 import useAuth from '../../hooks/useAuth';
 import useGetUser from '../../hooks/useGetUser';
+import LOGO from '../../../public/logo.png'
 
 const Navbar = () => {
     const { user, loading } = useAuth();
 
     const { user: userInfo } = useGetUser();
-    
+
     const role = userInfo?.data[0]?.role;
 
     const pages = <>
@@ -28,12 +29,13 @@ const Navbar = () => {
 
         {/* Employee */}
         {
-            role === "Employee" &&
-            <>
-                <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
-                <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Task Sheet</NavLink>
-                <NavLink className="nav-link mr-16 " to={`/addTask`}>Add Task</NavLink>
-            </>
+            // role === "Employee" &&
+            role !== "HR" && role !== "Admin" && user &&
+                <>
+                    <NavLink className="nav-link mr-16 " to={`/paymentHistory/${user?.email}`}>Payment History</NavLink>
+                    <NavLink className="nav-link mr-16 " to={`/workSheet/${user?.email}`}>Task Sheet</NavLink>
+                    <NavLink className="nav-link mr-16 " to={`/addTask`}>Add Task</NavLink>
+                </> 
         }
 
         {/* Admin */}
@@ -41,7 +43,7 @@ const Navbar = () => {
             role === "Admin" &&
             <NavLink className="nav-link mr-16 " to="/employeeList">Employee List</NavLink>
         }
-        <NavLink className="nav-link mr-16 " to="/contactUs">Contact us</NavLink>
+        <NavLink className="nav-link mr-16 " to="/contact">Contact us</NavLink>
     </>
 
     const [state, setState] = React.useState({
@@ -79,7 +81,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        <Link to={'/'}><img className='shrink-0 min-w-[200px]' src="logo.png" alt="" /></Link>
+                        <Link to={'/'}><img className='shrink-0 min-w-[200px]' src={LOGO} alt="" /></Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>

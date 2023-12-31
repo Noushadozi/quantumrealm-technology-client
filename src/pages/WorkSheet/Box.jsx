@@ -21,9 +21,8 @@ export const Box = ({ children, post, refetch }) => {
                             status: dropResult.name,
                         }
                         axiosPublic.patch(`/taskStatus/${post._id}`, updatedTask)
-                            .then(res => {
-                                refetch()
-                                console.log(res.data);
+                            .then(() => {
+                                location.reload()
                             })
                     }
                 }
@@ -34,6 +33,7 @@ export const Box = ({ children, post, refetch }) => {
         }),
         [children],
     )
+
     return (
         <div ref={drag}>
             {children}

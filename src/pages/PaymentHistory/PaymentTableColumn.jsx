@@ -8,11 +8,11 @@ export const paymentHistoryColumnDef = [
         header: "Month/Year",
     }),
     {
-        accessorFn: (row) => `${row.payment}`,
+        accessorFn: (row) => `${row.payment} USD`,
         header: 'Amount',
     },
     {
-        accessorFn: (row) => `${'✅'}`,
+        accessorFn: (row) => `${row.transaction_id}`,
         header: 'Transaction Id',
         onClick: () => { },
     },

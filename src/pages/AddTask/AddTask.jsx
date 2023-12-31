@@ -11,6 +11,8 @@ import Stack from '@mui/joy/Stack';
 import AddTaskSelect from './AddTaskSelect';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
+import Swal from 'sweetalert2'
+import { Button } from '@mui/base/Button';
 
 const AddTask = () => {
     const { user } = useContext(AuthContext);
@@ -37,7 +39,7 @@ const AddTask = () => {
 
 
     const onSubmit = async (form) => {
-        form.preventDefault();
+        // form.preventDefault();
         const description = form.description;
         const duration = form.duration;
         const priority = form.priority;
@@ -50,21 +52,22 @@ const AddTask = () => {
             date: day + " " + month + " " + year,
             priority
         }
-        axios.post(`http://localhost:5000/tasks`, task)
-            .then(res => {
-                console.log(res.data);
-                navigate('/');
-                toast.success('Task added successfully', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                });
-            })
+        try {
+            const res = await axios.post(`https://quantumrealm-technology-server.vercel.app/tasks`, task);
+            console.log(res.data);
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            navigate('/');
+        } catch (error) {
+            console.error("Error adding task:", error);
+        }
     }
 
     return (
@@ -74,29 +77,29 @@ const AddTask = () => {
                     <h1 className="text-5xl font-bold mb-8 text-center text-[#e9bafb]">Add Task!!</h1>
                 </div>
                 <div className="card rounded-[2px] flex-shrink-0 shadow-2xl">
-                    <form
-                        onSubmit={onSubmit}
-                    >
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <Stack spacing={2}>
                             <AddTaskSelect
                                 tasks={tasks}
                                 selected={selectedTask}
                                 setSelected={setSelectedTask}
                             ></AddTaskSelect>
+
                             <DatePicker
                                 className="bg-gradient-to-r from-[#a9b6e2] to-[#c9f3c1] text-[#001f4b] rounded-lg shadow-lg w-[100%]"
                                 showIcon
                                 selected={date}
                                 onChange={(date) => setDate(date)}
                             />
-                            <Select defaultValue="Low"
+                            <Select
                                 {...register("priority", { required: true })}
-                                className="bg-gradient-to-r from-[#a9b6e2] to-[#c9f3c1] text-[#001f4b] rounded-lg shadow-lg w-[100%]">
-                                <Option value="Priority" disabled>Task Priority</Option>
+                                className="bg-gradient-to-r from-[#a9b6e2] to-[#c9f3c1] text-[#001f4b] rounded-lg shadow-lg w-[100%]" placeholder="Task Priority">
                                 <Option value="Low">Low</Option>
                                 <Option value="Moderate">Moderate</Option>
                                 <Option value="High">High</Option>
                             </Select>
+                            {errors.priority && <span className='text-2xl text-[#e18787]'>Task priority is required</span>}
+
                             <Input
                                 {...register("description", { required: true })}
                                 className="text-[#001f4b] rounded-lg shadow-lg"
@@ -105,11 +108,9 @@ const AddTask = () => {
                             <Input
                                 {...register("duration", { required: true })}
                                 className="text-[#001f4b] rounded-lg shadow-lg"
-                                placeholder="Task duration" type='number' required
+                                placeholder="Task duration (Hour)" type='number' required
                             />
-                            <button className="text-[#001f4b] rounded-lg shadow-lg bg-[#e9bafb] w-[100%] btn btn-primary h-10" type="submit">
-                                Add Task
-                            </button>
+                            <Button className="text-[#001f4b] rounded-lg shadow-lg bg-[#e9bafb] w-[100%] btn btn-primary h-10" type="submit">Add Task</Button>
                         </Stack>
                     </form>
                 </div>

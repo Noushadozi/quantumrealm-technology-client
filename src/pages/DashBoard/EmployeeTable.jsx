@@ -6,10 +6,13 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../ui/Title";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useGetUser from "../../hooks/useGetUser";
 
 const EmployeeTable = () => {
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate();
+    const { user } = useGetUser();
+    console.log(user?.data[0]?.bank_account_no)
 
     const { refetch, data: users = [], isLoading } = useQuery({
         queryKey: ['users'],
@@ -32,7 +35,6 @@ const EmployeeTable = () => {
                 }
                 let payment;
                 let method;
-
                 Swal.fire({
                     title: `What payment do you want to be done to ${rowData.name}?`,
                     showDenyButton: true,
@@ -41,7 +43,6 @@ const EmployeeTable = () => {
                     confirmButtonText: `Monthly at ${rowData.salary}`,
                     denyButtonText: `Yearly at ${rowData.salary * 12}`
                 }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
                         Swal.fire("Done", `Monthly payment done to ${rowData.name}`, "success");
                         payment = rowData.salary * 1;
@@ -62,11 +63,10 @@ const EmployeeTable = () => {
                             const year = currentDate.getFullYear();
                             range = year;
                         }
-                        // console.log(range);
-                        // console.log(rowData.payments)
                         const paymentInfo = {
                             range: range,
-                            payment: payment
+                            payment: payment,
+                            transaction_id: user?.data[0]?.bank_account_no
                         }
                         let payments = rowData.payments || [];
                         payments.push(paymentInfo)

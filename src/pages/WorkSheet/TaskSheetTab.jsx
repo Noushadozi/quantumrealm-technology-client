@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import { Tab } from '@headlessui/react'
 import { Dustbin } from "./Dustbin";
 import { Box } from "./Box";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 const TaskSheetTab = ({ TODO, ONGOING, COMPLETED, refetch }) => {
+    const axiosSecure = useAxiosSecure();
+
     let [categories] = useState({
         TODO: [
             ...TODO
@@ -20,10 +23,15 @@ const TaskSheetTab = ({ TODO, ONGOING, COMPLETED, refetch }) => {
             ...COMPLETED
         ],
     })
-    const handleUpdate = () => {
-        console.log('update')
-    }
 
+    const deleteTask = (id) => {
+        console.log(id);
+        axiosSecure.delete(`/task/${id}`)
+            .then(res => {
+                console.log(res);
+                refetch();
+            })
+    }
 
     return (
         <div className="w-full max-w px-2 py-16 sm:px-0">
@@ -59,9 +67,9 @@ const TaskSheetTab = ({ TODO, ONGOING, COMPLETED, refetch }) => {
                             <ul>
                                 {posts.map((post) => (
                                     <Box
-                                        key={post.id} post={post} refetch={refetch}>
+                                        key={post._id} post={post} refetch={refetch} >
                                         <li
-                                            className="relative rounded-md p-3 hover:bg-gray-100 flex"
+                                            className="relative rounded-md p-3 hover:bg-gray-100 flex cursor-move"
                                         >
                                             <div className="shrink-0 w-[70%]">
                                                 <h3 className="text-sm font-medium leading-5">
@@ -72,21 +80,17 @@ const TaskSheetTab = ({ TODO, ONGOING, COMPLETED, refetch }) => {
                                                 <p className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">PRIORITY: {post.priority}</p>
                                                 <p className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">DEADLINE: {post.date}</p>
                                             </div>
-                                            <div className="flex flex-col w-[30%] gap-3">
+                                            <div className="flex flex-col justify-center w-[30%] gap-3">
                                                 <Link
                                                     to={`/updateTask/${post._id}`}
-                                                > <button className="btn bg-[#e9bafb] btn-primary h-[45px] w-[100%] rounded-lg text-[#001f4b]">
+                                                > <button className="btn bg-[#e9bafb] btn-primary h-[25px] w-[100%] rounded-lg text-[#001f4b] font-semibold">
                                                         UPDATE
-                                                    </button></Link>
-                                                <button className="btn bg-[#e9bafb] btn-primary h-[45px] w-[100%] rounded-lg text-[#001f4b]">DELETE</button>
+                                                    </button>
+                                                </Link>
+                                                <button
+                                                    onClick={() => deleteTask(post._id)}
+                                                    className="btn bg-[#e9bafb] btn-primary h-[25px] w-[100%] rounded-lg text-[#001f4b] font-semibold">DELETE</button>
                                             </div>
-                                            {/* <Link
-                                                to={`/updateTask/${post._id}`} onClick={handleUpdate}
-                                                className={classNames(
-                                                    'absolute inset-0 rounded-md',
-                                                    'ring-blue-400 focus:z-10 focus:outline-none focus:ring-2'
-                                                )}
-                                            /> */}
                                         </li>
                                     </Box>
                                 ))}

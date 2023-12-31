@@ -20,8 +20,9 @@ const Register = () => {
     const [error, setError] = useState('');
     const roleObj = {
         role: [
+            { name: 'Admin' },
             { name: 'Employee' },
-            { name: 'HR' }
+            { name: 'HR' },
         ]
     }
     const [selected, setSelected] = useState(roleObj.role[0])

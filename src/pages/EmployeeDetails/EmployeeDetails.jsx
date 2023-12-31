@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 const EmployeeDetails = () => {
     const axiosPublic = useAxiosPublic();
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#e9bafb");
     const id = useParams();
     console.log(id.id);
 
@@ -16,7 +19,15 @@ const EmployeeDetails = () => {
     })
 
     if (isLoading) {
-        return <progress></progress>
+        return <div className="text-center mt-[150px]">
+        <PulseLoader
+            color={color}
+            loading={loading}
+            size={20}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+    </div>
     }
 
     const { name, photo, designation } = user.data[0];

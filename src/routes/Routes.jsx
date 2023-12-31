@@ -12,6 +12,7 @@ import WorkSheet from "../pages/WorkSheet/WorkSheet";
 import EmployeeList from "../pages/EmployeeList/EmployeeList";
 import AddTask from "../pages/AddTask/AddTask";
 import UpdateTask from "../pages/UpdateTask/UpdateTask";
+import Contact from "../pages/Contact.jsx/Contact";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
             },
             {
                 path: '/dashboard',

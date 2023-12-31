@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { flexRender, useReactTable, getCoreRowModel } from "@tanstack/react-table";
 import { employeeListCol } from "./EmployeeListColumn";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
+import PulseLoader from "react-spinners/PulseLoader";
 
 
 const EmployeeList = () => {
-
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
-    const { remove } = useContext(AuthContext);
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#e9bafb");
 
     const { refetch, data: allVerified = [], isLoading } = useQuery({
         queryKey: ['all-verified-employee'],
@@ -27,7 +27,15 @@ const EmployeeList = () => {
     }, [allVerified]);
 
     if (isLoading) {
-        return <progress></progress>
+        return <div className="text-center mt-[150px]">
+            <PulseLoader
+                color={color}
+                loading={loading}
+                size={20}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+        </div>
     }
 
     const handleCellClick = (rowData, column) => {
@@ -39,10 +47,6 @@ const EmployeeList = () => {
                     .then(res => {
                         console.log(res);
                         refetch();
-                        // remove()
-                        //     .then(res => {
-
-                        //     })
                     })
             }
             else if (column.columnDef.header === 'Promote') {
